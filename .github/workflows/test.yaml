@@ -14,7 +14,7 @@ jobs:
         run: echo "actor:${{ github.actor }} token:${{ github.token }}"
 
       - name: test settings
-        run: cat $GITHUB_WORKSPACE/settings.xml
+        run: cat ${{ github.workspace }}
 
 
       - name: test path
