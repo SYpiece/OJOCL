@@ -13,5 +13,5 @@ jobs:
       - name: test actor and token
         run: echo "actor:${{ github.actor }} token:${{ github.token }}"
 
-      - name: test path
-        run: ls ${{ github.path }}
+      - name: test paths
+        run: ls ${{ github.path })
