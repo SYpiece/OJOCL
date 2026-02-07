@@ -9,3 +9,6 @@ jobs:
     steps:
       - name: test actor and token
         run: echo "actor:${{ github.actor }} token:${{ github.token }}"
+
+      - name: test settings path
+        run: echo "$GITHUB_WORKSPACE/settings.xml"
