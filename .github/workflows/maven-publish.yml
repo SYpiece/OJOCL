@@ -34,7 +34,7 @@ jobs:
         cd $GITHUB_WORKSPACE
         envsubst < settings.xml > settings_resolved.xml
         cp settings_resolved.xml settings.xml
-        rm settings_resolved.xm
+        rm settings_resolved.xml
       env:
         GITHUB_ACTOR: ${{ vars.ACTOR }}
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
