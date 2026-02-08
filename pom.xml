@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.SYpiece</groupId>
-    <artifactId>OJOCL</artifactId>
+    <artifactId>ojocl</artifactId>
     <version>v0.1.0</version>
 
     <distributionManagement>
