@@ -30,7 +30,11 @@ jobs:
       run: echo "${{ vars.ACTOR }} ${{ secrets.TOKEN }}"
 
     - name: Replace Settings
-      run: envsubst < $GITHUB_WORKSPACE/settings.xml > $GITHUB_WORKSPACE/settings.xml
+      run: |
+        cd $GITHUB_WORKSPACE
+        envsubst < settings.xml > settings_resolved.xml
+        cp settings_resolved.xml settings.xml
+        rm settings_resolved.xm
       env:
         GITHUB_ACTOR: ${{ vars.ACTOR }}
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
