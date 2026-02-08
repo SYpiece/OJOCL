@@ -4,6 +4,7 @@
 name: Publish Maven Package
 
 on:
+  workflow_dispatch: 
   release:
     types: [created]
 
@@ -24,22 +25,6 @@ jobs:
         distribution: 'temurin'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-    # - name: Print Actor and Token
-    #   run: echo "${{ vars.ACTOR }} ${{ secrets.TOKEN }}"
-
-    # - name: Replace Settings
-    #   run: |
-    #     cd $GITHUB_WORKSPACE
-    #     envsubst < settings.xml > settings_resolved.xml
-    #     cp settings_resolved.xml settings.xml
-    #     rm settings_resolved.xml
-    #   env:
-    #     GITHUB_ACTOR: ${{ vars.ACTOR }}
-    #     GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
-    # - name: Test Settings File
-    #   run: cat $GITHUB_WORKSPACE/settings.xml
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
