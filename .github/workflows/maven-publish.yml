@@ -26,6 +26,9 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Print Actor and Token
+      run: echo "${{ vars.ACTOR }} ${{ secrets.TOKEN }}"
+
     - name: Replace Settings
       run: envsubst < $GITHUB_WORKSPACE/settings.xml > $GITHUB_WORKSPACE/settings.xml
       env:
@@ -33,7 +36,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
     - name: Test Settings File
-      run: ls -a $GITHUB_WORKSPACE; cat $GITHUB_WORKSPACE/settings.xml
+      run: cat $GITHUB_WORKSPACE/settings.xml
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
