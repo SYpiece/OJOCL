@@ -37,3 +37,5 @@ jobs:
       # env:
       #   GITHUB_ACTOR: ${{ vars.PUBLISHER }}
       #   GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+    - name: Print Error
+      run: mvn -e
