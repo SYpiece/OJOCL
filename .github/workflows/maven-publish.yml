@@ -34,8 +34,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
+    - name: Check Error
+      if: failure()
+      run: mvn deploy -X
+
     - name: Publish to Maven Central
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D deploy.repo=central
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+
+    - name: Check Error
+      if: failure()
+      run: mvn deploy -X
