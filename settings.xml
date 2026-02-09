@@ -1,42 +1,6 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
-
-    <profiles>
-        <profile>
-            <id>github</id>
-            <activation>
-                <property>
-                    <name>deploy.repo</name>
-                    <value>github</value>
-                </property>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Packages</name>
-                    <url>https://maven.pkg.github.com/SYpiece/OJOCL</url>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
-            <id>central</id>
-            <activation>
-                <property>
-                    <name>deploy.repo</name>
-                    <value>central</value>
-                </property>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <name>Maven Central</name>
-                    <url>https://repo1.maven.org/maven2</url>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
-
     <servers>
         <server>
             <id>github</id>
