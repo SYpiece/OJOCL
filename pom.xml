@@ -9,19 +9,6 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/SYpiece/OJOCL</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
