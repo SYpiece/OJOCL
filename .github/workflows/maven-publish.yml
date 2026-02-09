@@ -36,9 +36,12 @@ jobs:
 
     - name: Check Error
       if: failure()
-      run: mvn deploy -X
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D deploy.repo=github -X
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Publish to Maven Central
+      if: always()
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D deploy.repo=central
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
@@ -46,4 +49,7 @@ jobs:
 
     - name: Check Error
       if: failure()
-      run: mvn deploy -X
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D deploy.repo=central -X
+      env:
+        MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
