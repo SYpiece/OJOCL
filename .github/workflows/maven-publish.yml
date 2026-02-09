@@ -35,6 +35,7 @@ jobs:
       if: ${{ always() && steps.build.conclusion == 'success' }}
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL
       env:
+        GITHUB_ACTOR: ${{ github.actor }}
         GITHUB_TOKEN: ${{ github.token }}
 
     - name: Check Error
