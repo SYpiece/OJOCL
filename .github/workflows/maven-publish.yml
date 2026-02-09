@@ -9,7 +9,7 @@ on:
     types: [created]
 
 jobs:
-  build-and-publish:
+  publish:
 
     runs-on: ubuntu-latest
     permissions:
