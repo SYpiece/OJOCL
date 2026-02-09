@@ -32,13 +32,13 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       id: github-deploy
-      if: ${{ steps.build.conclusion == 'success' }}
+      if: ${{ always() && steps.build.conclusion == 'success' }}
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
     - name: Check Error
-      if: ${{ steps.github-deploy.conclusion == 'failure' }}
+      if: ${{ always() && steps.github-deploy.conclusion == 'failure' }}
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X
       env:
         GITHUB_ACTOR: ${{ github.actor }}
@@ -46,14 +46,14 @@ jobs:
 
     - name: Publish to Maven Central
       id: maven-central-deploy
-      if: ${{ steps.build.conclusion == 'success' }}
+      if: ${{ always() && steps.build.conclusion == 'success' }}
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
 
     - name: Check Error
-      if: ${{ steps.maven-central-deploy.conclusion == 'failure' }}
+      if: ${{ always() && steps.maven-central-deploy.conclusion == 'failure' }}
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
