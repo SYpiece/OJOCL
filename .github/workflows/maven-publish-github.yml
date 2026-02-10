@@ -25,10 +25,14 @@ jobs:
           server-id: 'github'
           server-username: ${{ github.actor }}
           server-password: ${{ github.token }}
+          settings-path: ${{ github.workspace }}
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
       - name: Publish to GitHub Packages
         id: publish
-        run: mvn -B deploy -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X
+        run: "mvn \
+          -B deploy \
+          -s $GITHUB_WORKSPACE/settings.xml \
+          -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X"
