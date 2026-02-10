@@ -31,6 +31,8 @@ jobs:
         id: build
         run: mvn -B package --file pom.xml
 
+      - run: "cat ~/.m2/settings.xml"
+
       - name: Publish to Maven Central
         run: "mvn deploy \
           -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X"
