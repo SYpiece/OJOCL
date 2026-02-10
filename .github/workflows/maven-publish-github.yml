@@ -31,4 +31,4 @@ jobs:
 
       - name: Publish to GitHub Packages
         id: publish
-        run: mvn -B deploy -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL
+        run: mvn -B deploy -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X
