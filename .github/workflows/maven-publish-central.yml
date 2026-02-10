@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
-          server-id: ossrh
+          server-id: 'ossrh'
           server-username: ${{ secrets.MAVEN_USERNAME }}
           server-password: ${{ secrets.MAVEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -32,5 +32,10 @@ jobs:
         id: build
         run: mvn -B package --file pom.xml
 
+      - name: Test Settings File
+        run: "cat $GITHUB_WORKSPACE/settings.xml"
+
       - name: Publish to Maven Central
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X
+        run: "mvn deploy \
+          -s $GITHUB_WORKSPACE/settings.xml \
+          -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X"

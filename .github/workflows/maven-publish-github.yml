@@ -31,7 +31,7 @@ jobs:
       - name: Publish to GitHub Packages
         id: publish
         run: "mvn \
-          -B deploy \
+          deploy \
           -s $GITHUB_WORKSPACE/settings.xml \
           -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X"
         env:
