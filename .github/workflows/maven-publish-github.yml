@@ -23,8 +23,6 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
           server-id: 'github'
-          server-username: ${{ github.actor }}
-          server-password: ${{ github.token }}
           settings-path: ${{ github.workspace }}
 
       - name: Build with Maven
@@ -36,3 +34,6 @@ jobs:
           -B deploy \
           -s $GITHUB_WORKSPACE/settings.xml \
           -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X"
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
