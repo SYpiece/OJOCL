@@ -32,9 +32,6 @@ jobs:
         id: build
         run: mvn -B package --file pom.xml
 
-      - name: Test Settings File
-        run: "cat $GITHUB_WORKSPACE/settings.xml"
-
       - name: Publish to Maven Central
         run: "mvn deploy \
           -s $GITHUB_WORKSPACE/settings.xml \
