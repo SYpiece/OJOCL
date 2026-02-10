@@ -4,7 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.SYpiece</groupId>
+    <name>OJOCL</name>
+    <description>OpenCL Wrapper for Java</description>
+    <url>https://github.com/SYpiece/OJOCL.git</url>
+
+    <groupId>io.github.sypiece</groupId>
     <artifactId>ojocl</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
