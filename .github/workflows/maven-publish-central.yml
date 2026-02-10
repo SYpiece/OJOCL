@@ -25,7 +25,7 @@ jobs:
           server-username: 'USERNAME'
           server-password: 'PASSWORD'
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: 'PASSPHRASE''
+          gpg-passphrase: 'PASSPHRASE'
 
       - name: Build with Maven
         id: build
