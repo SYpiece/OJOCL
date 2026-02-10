@@ -35,7 +35,7 @@ jobs:
 
       - name: Publish to Maven Central
         run: "mvn deploy \
-          -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X"
+          -D altDeploymentRepository=central::default::https://oss.sonatype.org/service/local/staging/deploy/maven2 -X"
         env:
           USERNAME: ${{ secrets.MAVEN_USERNAME }}
           PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
