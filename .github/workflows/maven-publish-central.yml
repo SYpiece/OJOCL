@@ -26,16 +26,11 @@ jobs:
           server-password: ${{ secrets.MAVEN_PASSWORD }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          settings-path: ${{ github.workplace }}
 
       - name: Build with Maven
         id: build
         run: mvn -B package --file pom.xml
 
-      - name: Test
-        run: "ls $GITHUB_WORKSPACE"
-
       - name: Publish to Maven Central
         run: "mvn deploy \
-          -s $GITHUB_WORKSPACE/settings.xml \
           -D altDeploymentRepository=central::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2 -X"
