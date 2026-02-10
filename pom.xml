@@ -15,6 +15,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>SYpiece</name>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/SYpiece/ojocl.git</connection>
+        <developerConnection>scm:git:https://github.com/SYpiece/ojocl.git</developerConnection>
+        <url>https://github.com/SYpiece/OJOCL.git</url>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.jocl</groupId>
