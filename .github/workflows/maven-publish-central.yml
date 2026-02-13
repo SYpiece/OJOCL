@@ -40,3 +40,11 @@ jobs:
           USERNAME: ${{ secrets.MAVEN_USERNAME }}
           PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
           PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+
+      - name: Publish to Maven Central
+        run: "mvn deploy -P central -X"
+        env:
+          USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
