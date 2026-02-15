@@ -7,7 +7,7 @@ import org.jocl.cl_kernel;
 
 import static org.jocl.CL.*;
 
-public class OpenCLKernel extends OpenCLInfoObject<cl_kernel> implements AutoCloseable {
+public class OpenCLKernel extends OpenCLBaseObject<cl_kernel> implements AutoCloseable {
     final cl_kernel kernel;
 
     OpenCLKernel(cl_kernel kernel) {

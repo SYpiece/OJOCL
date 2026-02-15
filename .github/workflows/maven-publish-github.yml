@@ -31,16 +31,6 @@ jobs:
 
       - run: "cat ~/.m2/settings.xml"
 
-#      - name: Publish to GitHub Packages
-#        id: publish
-#        run: "mvn \
-#          deploy \
-#          -D altDeploymentRepository=github::default::https://maven.pkg.github.com/SYpiece/OJOCL -X"
-#        env:
-#          USERNAME: ${{ github.actor }}
-#          PASSWORD: ${{ github.token }}
-#          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-
       - name: Publish to GitHub Packages
         id: publish
         run: "mvn deploy -P github -X"

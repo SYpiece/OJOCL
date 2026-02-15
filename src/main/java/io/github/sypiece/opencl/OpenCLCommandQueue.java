@@ -4,7 +4,7 @@ import org.jocl.*;
 
 import static org.jocl.CL.*;
 
-public class OpenCLCommandQueue extends OpenCLInfoObject<cl_command_queue> implements AutoCloseable {
+public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> implements AutoCloseable {
     public static OpenCLCommandQueue create(OpenCLContext context, OpenCLDevice device) {
         return create(context, device, null);
     }

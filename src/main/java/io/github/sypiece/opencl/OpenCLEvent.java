@@ -5,7 +5,7 @@ import org.jocl.cl_event;
 
 import static org.jocl.CL.*;
 
-public class OpenCLEvent extends OpenCLInfoObject<cl_event> implements AutoCloseable {
+public class OpenCLEvent extends OpenCLBaseObject<cl_event> implements AutoCloseable {
     public static void waitFor(OpenCLEvent... events) {
         cl_event[] eventArray = new cl_event[events.length];
         for (int i = 0; i < events.length; i++) {
@@ -123,7 +123,7 @@ public class OpenCLEvent extends OpenCLInfoObject<cl_event> implements AutoClose
         }
     }
 
-    public class ProfilingEvent extends OpenCLInfoObject<cl_event> {
+    public class ProfilingEvent extends OpenCLBaseObject<cl_event> {
         ProfilingEvent() {
             super(event, CL::clGetEventProfilingInfo);
         }

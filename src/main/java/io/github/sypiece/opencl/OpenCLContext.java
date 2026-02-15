@@ -7,7 +7,7 @@ import org.jocl.cl_device_id;
 
 import static org.jocl.CL.*;
 
-public class OpenCLContext extends OpenCLInfoObject<cl_context> implements AutoCloseable {
+public class OpenCLContext extends OpenCLBaseObject<cl_context> implements AutoCloseable {
     public static OpenCLContext create(OpenCLDevice... devices) {
         return create(null,  devices);
     }

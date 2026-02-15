@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import static org.jocl.CL.*;
 
-public class OpenCLPlatform extends OpenCLInfoObject<cl_platform_id> {
+public class OpenCLPlatform extends OpenCLBaseObject<cl_platform_id> {
     final cl_platform_id platformID;
 
     OpenCLPlatform(cl_platform_id platformID) {

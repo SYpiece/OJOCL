@@ -2,11 +2,15 @@ package io.github.sypiece.opencl;
 
 import org.jocl.*;
 
-abstract class OpenCLInfoObject<T> {
+public abstract class OpenCLBaseObject<T> {
     final T baseObject;
     final InfoGetter<T> infoGetter;
 
-    OpenCLInfoObject(T baseObject, InfoGetter<T> infoGetter) {
+    public T getBaseObject() {
+        return baseObject;
+    }
+
+    OpenCLBaseObject(T baseObject, InfoGetter<T> infoGetter) {
         this.baseObject = baseObject;
         this.infoGetter = infoGetter;
     }

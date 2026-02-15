@@ -5,7 +5,7 @@ import org.jocl.cl_device_id;
 
 import static org.jocl.CL.*;
 
-public class OpenCLDevice extends OpenCLInfoObject<cl_device_id> {
+public class OpenCLDevice extends OpenCLBaseObject<cl_device_id> {
     final cl_device_id deviceID;
 
     OpenCLDevice(cl_device_id deviceID) {

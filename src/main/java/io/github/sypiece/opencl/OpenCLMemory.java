@@ -4,7 +4,7 @@ import org.jocl.*;
 
 import static org.jocl.CL.*;
 
-public class OpenCLMemory extends OpenCLInfoObject<cl_mem> implements AutoCloseable {
+public class OpenCLMemory extends OpenCLBaseObject<cl_mem> implements AutoCloseable {
     public static OpenCLMemory createBuffer(OpenCLContext context, Flags flags, long size) {
         return new OpenCLMemory(clCreateBuffer(context.context, flags.value, size, null, null));
     }
