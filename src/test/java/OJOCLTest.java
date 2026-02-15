@@ -51,9 +51,9 @@ public class OJOCLTest {
             kernel.setArg(2, resultBuffer);
             kernel.setArg(3, SIZE);
 
-            queue.enqueueNDRangeKernel(kernel, OpenCLCommandQueue.Range.create(SIZE));
+            queue.executeKernel(kernel, OpenCLCommandQueue.Range.create(SIZE));
 
-            queue.enqueueReadBuffer(resultBuffer, c);
+            queue.readBuffer(resultBuffer, c);
         }
 
         for (int i = 0; i < SIZE; i++) {

@@ -76,72 +76,72 @@ public class VectorAddExample {
             System.err.println("未找到OpenCL平台");
             return;
         }
-        
+
         OpenCLPlatform platform = platforms[0];
         System.out.println("使用平台: " + platform.getName());
-        
+
         // 获取设备
         OpenCLDevice[] devices = platform.getDevices(OpenCLDevice.Type.GPU);
         if (devices.length == 0) {
             System.err.println("未找到GPU设备");
             return;
         }
-        
+
         OpenCLDevice device = devices[0];
         System.out.println("使用设备: " + device.getName());
-        
+
         // 创建上下文
         try (OpenCLContext context = OpenCLContext.create(device)) {
             // 创建命令队列
             try (OpenCLCommandQueue queue = OpenCLCommandQueue.create(context, device)) {
-                
+
                 // 准备数据
                 int n = 1024;
                 float[] a = new float[n];
                 float[] b = new float[n];
                 float[] c = new float[n];
-                
+
                 for (int i = 0; i < n; i++) {
                     a[i] = i;
                     b[i] = i * 2;
                 }
-                
+
                 // 创建内存对象
                 OpenCLMemory.Flags flags = new OpenCLMemory.Flags()
-                    .setReadWrite();
-                    
+                        .setReadWrite();
+
                 try (OpenCLMemory.Float bufferA = OpenCLMemory.createFloatBuffer(context, flags, a);
                      OpenCLMemory.Float bufferB = OpenCLMemory.createFloatBuffer(context, flags, b);
                      OpenCLMemory.Float bufferC = OpenCLMemory.createFloatBuffer(context, flags, n)) {
-                    
+
                     // OpenCL内核源码
-                    String kernelSource = 
-                        "__kernel void vector_add(__global const float* a, " +
-                        "                        __global const float* b, " +
-                        "                        __global float* c) {" +
-                        "    int i = get_global_id(0);" +
-                        "    c[i] = a[i] + b[i];" +
-                        "}";
-                    
+                    String kernelSource =
+                            "__kernel void vector_add(__global const float* a, " +
+                                    "                        __global const float* b, " +
+                                    "                        __global float* c) {" +
+                                    "    int i = get_global_id(0);" +
+                                    "    c[i] = a[i] + b[i];" +
+                                    "}";
+
                     // 创建和构建程序
                     try (OpenCLProgram program = OpenCLProgram.create(context, kernelSource).build()) {
-                        
+
                         // 创建内核
                         try (OpenCLKernel kernel = program.createKernel("vector_add")) {
-                            
+
                             // 设置内核参数
                             kernel.setArg(0, bufferA);
                             kernel.setArg(1, bufferB);
                             kernel.setArg(2, bufferC);
-                            
+
                             // 执行内核
                             OpenCLCommandQueue.Range range = OpenCLCommandQueue.Range.create(n);
-                            queue.enqueueNDRangeKernel(kernel, range);
-                            
+                            queue.executeKernel(kernel, range);
+
                             // 读取结果
                             queue.enqueueReadBuffer(bufferC, c);
                             queue.finish();
-                            
+
                             // 验证结果
                             for (int i = 0; i < 10; i++) {
                                 System.out.printf("c[%d] = %.1f%n", i, c[i]);
