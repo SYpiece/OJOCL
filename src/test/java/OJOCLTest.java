@@ -8,8 +8,17 @@ import java.util.Random;
 public class OJOCLTest {
     @Test
     public void testA() {
-        final int ROWS = 64;
-        final int COLS = 64;
+        for (OpenCLPlatform platform : OpenCL.getPlatforms()) {
+            for (OpenCLDevice device : platform.getDevices()) {
+                System.out.printf("Testing Device: %s%n", device.getName());
+                testDevice(device);
+            }
+        }
+    }
+
+    private void testDevice(OpenCLDevice device) {
+        final int ROWS = 1024;
+        final int COLS = 1024;
         final int SIZE = ROWS * COLS;
 
         float[] a = new float[SIZE];
@@ -30,8 +39,6 @@ public class OJOCLTest {
                         "    int gid = get_global_id(0); " +
                         "        result[gid] = a[gid] + b[gid]; " +
                         "}";
-
-        OpenCLDevice device = OpenCL.getPlatforms()[0].getDevices(OpenCLDevice.Type.GPU)[0];
 
         OpenCLMemory.Flags argsFlags = new OpenCLMemory.Flags().setReadOnly().setCopyHostPtr();
         OpenCLMemory.Flags resultFlags = new OpenCLMemory.Flags().setWriteOnly();
