@@ -27,6 +27,8 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: 'PASSPHRASE'
 
+      - run: sudo apt install -y pocl-opencl-icd
+
       - name: Build with Maven
         id: build
         run: mvn -B package --file pom.xml

@@ -1,6 +1,7 @@
 # OJOCL - OpenCL Java Bindings
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache_License,_Version_2.0-blue.svg)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/SYpiece/OJOCL?label=GitHub%20Release)](https://github.com/SYpiece/OJOCL/packages)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.SYpiece/ojocl)](https://search.maven.org/artifact/io.github.SYpiece/ojocl)
 [![Java Version](https://img.shields.io/badge/java-8+-brightgreen.svg)](https://www.oracle.com/java/technologies/javase-downloads.html)
 
@@ -20,7 +21,8 @@ OJOCL是一个轻量级的OpenCL Java绑定库，提供了简洁易用的API来�
 - [贡献](#贡献)
 - [许可证](#许可证)
 
-## 📖 简介
+<a id="简介"></a>
+## 📖 简介 
 
 OJOCL（OpenCL Java Object）是一个面向对象的OpenCL Java绑定库，旨在简化在Java应用程序中使用OpenCL进行并行计算的过程。它封装了底层的JOCL库，提供了更加直观和类型安全的API。
 
