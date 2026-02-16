@@ -26,6 +26,8 @@ jobs:
           server-username: 'USERNAME'
           server-password: 'PASSWORD'
 
+      - run: sudo apt install -y pocl-opencl-icd
+
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
