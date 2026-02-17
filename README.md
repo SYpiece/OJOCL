@@ -64,7 +64,7 @@ implementation 'io.github.SYpiece:ojocl:0.1.0'
 
 ### 手动下载
 
-从[GitHub Releases](https://github.com/SYpiece/OJOCL/releases)下载JAR文件并添加到classpath中。
+从[GitHub Packages](https://github.com/SYpiece/OJOCL/packages)下载JAR文件并添加到classpath中。
 
 <a id="快速开始"></a>
 ## 🚀 快速开始
@@ -315,7 +315,6 @@ mvn -Dtest=OJOCLTest test
 ## 📞 联系方式
 
 - 作者: SYpiece
-- 邮箱: sypiece@example.com
 - GitHub: [https://github.com/SYpiece](https://github.com/SYpiece)
 
 ## 🙏 致谢
