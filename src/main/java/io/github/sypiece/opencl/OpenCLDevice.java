@@ -3,6 +3,7 @@ package io.github.sypiece.opencl;
 import org.jocl.CL;
 import org.jocl.cl_device_id;
 
+import static io.github.sypiece.opencl.OpenCLConstant.CL_DEVICE_IL_VERSION;
 import static org.jocl.CL.*;
 
 public class OpenCLDevice extends OpenCLObject<cl_device_id> {
@@ -92,6 +93,10 @@ public class OpenCLDevice extends OpenCLObject<cl_device_id> {
 
     public long getImage3DMaxWidth() {
         return getSizeTInfo(CL_DEVICE_IMAGE3D_MAX_WIDTH);
+    }
+
+    public String getILVersion() {
+        return getStringInfo(CL_DEVICE_IL_VERSION);
     }
 
     public long getLocalMemSize() {

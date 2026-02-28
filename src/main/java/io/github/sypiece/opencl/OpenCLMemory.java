@@ -57,34 +57,6 @@ public class OpenCLMemory extends OpenCLObject<cl_mem> implements AutoCloseable 
         return new Double(clCreateBuffer(context.context, flags.value, (long) Sizeof.cl_double * values.length, Pointer.to(values), null));
     }
 
-    public static OpenCLMemory createSubBuffer(OpenCLMemory parent, Flags flags, long offset, long size) {
-        return new OpenCLMemory(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, size), null));
-    }
-
-    public static Byte createSubByteBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Byte(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_char * length), null));
-    }
-
-    public static Short createSubShortBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Short(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_short * length), null));
-    }
-
-    public static Integer createSubIntegerBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Integer(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_int * length), null));
-    }
-
-    public static Long createSubLongBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Long(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_long * length), null));
-    }
-
-    public static Float createSubFloatBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Float(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_float * length), null));
-    }
-
-    public static Double createSubDoubleBuffer(OpenCLMemory parent, Flags flags, long offset, long length) {
-        return new Double(clCreateSubBuffer(parent.memory, flags.value, CL_BUFFER_CREATE_TYPE_REGION, new cl_buffer_region(offset, Sizeof.cl_double * length), null));
-    }
-
     final cl_mem memory;
 
     OpenCLMemory(cl_mem memory) {
