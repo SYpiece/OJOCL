@@ -50,13 +50,14 @@ public class OJOCLTest {
                 OpenCLMemory.Float bBuffer = OpenCLMemory.createFloatBuffer(context, argsFlags, b);
                 OpenCLMemory.Float resultBuffer = OpenCLMemory.createFloatBuffer(context, resultFlags, SIZE);
 
-                OpenCLProgram program = OpenCLProgram.create(context, kernelSource);
+                OpenCLProgram program = OpenCLProgram.createWithSource(context, kernelSource);
                 OpenCLKernel kernel = program.build().createKernel("matrixAdd");
         ) {
-            kernel.setArg(0, aBuffer);
-            kernel.setArg(1, bBuffer);
-            kernel.setArg(2, resultBuffer);
-            kernel.setArg(3, SIZE);
+            kernel
+                    .setArg(0, aBuffer)
+                    .setArg(1, bBuffer)
+                    .setArg(2, resultBuffer)
+                    .setArg(3, SIZE);
 
             queue.executeKernel(kernel, OpenCLCommandQueue.Range.create(SIZE));
 

@@ -130,7 +130,7 @@ public class VectorAddExample {
                                     "}";
 
                     // 创建和构建程序
-                    try (OpenCLProgram program = OpenCLProgram.create(context, kernelSource).build()) {
+                    try (OpenCLProgram program = OpenCLProgram.createWithSource(context, kernelSource).build()) {
 
                         // 创建内核
                         try (OpenCLKernel kernel = program.createKernel("vector_add")) {

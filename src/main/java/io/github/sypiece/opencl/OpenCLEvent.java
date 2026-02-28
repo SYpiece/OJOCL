@@ -5,7 +5,7 @@ import org.jocl.cl_event;
 
 import static org.jocl.CL.*;
 
-public class OpenCLEvent extends OpenCLBaseObject<cl_event> implements AutoCloseable {
+public class OpenCLEvent extends OpenCLObject<cl_event> implements AutoCloseable {
     public static void waitFor(OpenCLEvent... events) {
         cl_event[] eventArray = new cl_event[events.length];
         for (int i = 0; i < events.length; i++) {
@@ -17,7 +17,7 @@ public class OpenCLEvent extends OpenCLBaseObject<cl_event> implements AutoClose
     final cl_event event;
 
     public OpenCLEvent(cl_event event) {
-        super(event, CL::clGetEventInfo);
+        super(event, CL::clGetEventInfo, CL::clGetEventProfilingInfo);
         this.event = event;
     }
 
@@ -37,12 +37,24 @@ public class OpenCLEvent extends OpenCLBaseObject<cl_event> implements AutoClose
         return CommandExecutionStatus.valueOf(getIntInfo(CL_EVENT_COMMAND_EXECUTION_STATUS));
     }
 
-    public ProfilingEvent getProfilingEvent() {
-        return new ProfilingEvent();
-    }
-
     public int getReferenceCount() {
         return getIntInfo(CL_EVENT_REFERENCE_COUNT);
+    }
+
+    public long getProfilingCommandQueued() {
+        return getLongInfo(CL_PROFILING_COMMAND_QUEUED, 1);
+    }
+
+    public long getProfilingCommandSubmit() {
+        return getLongInfo(CL_PROFILING_COMMAND_SUBMIT, 1);
+    }
+
+    public long getProfilingCommandStart() {
+        return getLongInfo(CL_PROFILING_COMMAND_START, 1);
+    }
+
+    public long getProfilingCommandEnd() {
+        return getLongInfo(CL_PROFILING_COMMAND_END, 1);
     }
 
     public OpenCLEvent waitFor() {
@@ -120,28 +132,6 @@ public class OpenCLEvent extends OpenCLBaseObject<cl_event> implements AutoClose
                 }
             }
             throw new IllegalArgumentException("Invalid command execution status value: " + value);
-        }
-    }
-
-    public class ProfilingEvent extends OpenCLBaseObject<cl_event> {
-        ProfilingEvent() {
-            super(event, CL::clGetEventProfilingInfo);
-        }
-
-        public long getQueued() {
-            return getLongInfo(CL_PROFILING_COMMAND_QUEUED);
-        }
-
-        public long getSubmit() {
-            return getLongInfo(CL_PROFILING_COMMAND_SUBMIT);
-        }
-
-        public long getStart() {
-            return getLongInfo(CL_PROFILING_COMMAND_START);
-        }
-
-        public long getEnd() {
-            return getLongInfo(CL_PROFILING_COMMAND_END);
         }
     }
 

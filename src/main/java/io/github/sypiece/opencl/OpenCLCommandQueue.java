@@ -5,7 +5,7 @@ import org.jocl.*;
 import static org.jocl.CL.*;
 import static org.jocl.CL.clWaitForEvents;
 
-public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> implements AutoCloseable {
+public class OpenCLCommandQueue extends OpenCLObject<cl_command_queue> implements AutoCloseable {
     public static OpenCLCommandQueue create(OpenCLContext context, OpenCLDevice device) {
         return create(context, device, null);
     }
@@ -100,30 +100,30 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Byte memory, byte[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Short memory, short[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Integer memory, int[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Long memory, long[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Float memory, float[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent readBufferAsync(OpenCLMemory.Double memory, double[] values) {
-        return readBufferAsync(memory, values, null);
+        return readBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Byte memory, byte[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Byte memory, byte[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -133,7 +133,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Short memory, short[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Short memory, short[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -143,7 +143,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Integer memory, int[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Integer memory, int[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -153,7 +153,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Long memory, long[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Long memory, long[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -163,7 +163,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Float memory, float[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Float memory, float[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -173,7 +173,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent readBufferAsync(OpenCLMemory.Double memory, double[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent readBufferAsync(OpenCLMemory.Double memory, double[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueReadBuffer(
@@ -208,30 +208,30 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Byte memory, byte[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Short memory, short[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Integer memory, int[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Long memory, long[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Float memory, float[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
     public OpenCLEvent writeBufferAsync(OpenCLMemory.Double memory, double[] values) {
-        return writeBufferAsync(memory, values, null);
+        return writeBufferAsync(memory, values, (OpenCLEvent[]) null);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Byte memory, byte[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Byte memory, byte[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -241,7 +241,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Short memory, short[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Short memory, short[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -251,7 +251,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Integer memory, int[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Integer memory, int[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -261,7 +261,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Long memory, long[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Long memory, long[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -271,7 +271,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Float memory, float[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Float memory, float[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -281,7 +281,7 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         return new OpenCLEvent(event);
     }
 
-    public OpenCLEvent writeBufferAsync(OpenCLMemory.Double memory, double[] values, OpenCLEvent[] waitList) {
+    public OpenCLEvent writeBufferAsync(OpenCLMemory.Double memory, double[] values, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueWriteBuffer(
@@ -295,13 +295,14 @@ public class OpenCLCommandQueue extends OpenCLBaseObject<cl_command_queue> imple
         cl_event event = new cl_event();
         clEnqueueNDRangeKernel(commandQueue, kernel.kernel, range.workDim, range.globalWorkOffset, range.globalWorkSize, range.localWorkSize, 0, null, event);
         clWaitForEvents(1, new cl_event[] { event });
+        clReleaseEvent(event);
     }
 
     public OpenCLEvent executeKernelAsync(OpenCLKernel kernel, Range range) {
-        return executeKernelAsync(kernel, range, null);
+        return executeKernelAsync(kernel, range, (OpenCLEvent[]) null);
     }
 
-    public OpenCLEvent executeKernelAsync(OpenCLKernel kernel, Range range, OpenCLEvent[] waitList) {
+    public OpenCLEvent executeKernelAsync(OpenCLKernel kernel, Range range, OpenCLEvent... waitList) {
         cl_event[] events = toCLEventArray(waitList);
         cl_event event = new cl_event();
         clEnqueueNDRangeKernel(

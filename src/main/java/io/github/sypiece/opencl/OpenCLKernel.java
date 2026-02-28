@@ -7,7 +7,7 @@ import org.jocl.cl_kernel;
 
 import static org.jocl.CL.*;
 
-public class OpenCLKernel extends OpenCLBaseObject<cl_kernel> implements AutoCloseable {
+public class OpenCLKernel extends OpenCLObject<cl_kernel> implements AutoCloseable {
     final cl_kernel kernel;
 
     OpenCLKernel(cl_kernel kernel) {
@@ -35,32 +35,39 @@ public class OpenCLKernel extends OpenCLBaseObject<cl_kernel> implements AutoClo
         return getProgramInfo(CL_KERNEL_PROGRAM);
     }
 
-    public void setArg(int index, OpenCLMemory memory) {
+    public OpenCLKernel setArg(int index, OpenCLMemory memory) {
         clSetKernelArg(kernel, index, Sizeof.cl_mem, Pointer.to(memory.memory));
+        return this;
     }
 
-    public void setArg(int index, byte value) {
+    public OpenCLKernel setArg(int index, byte value) {
         clSetKernelArg(kernel, index, Sizeof.cl_char, Pointer.to(new byte[]{value}));
+        return this;
     }
 
-    public void setArg(int index, short value) {
+    public OpenCLKernel setArg(int index, short value) {
         clSetKernelArg(kernel, index, Sizeof.cl_short, Pointer.to(new short[]{value}));
+        return this;
     }
 
-    public void setArg(int index, int value) {
+    public OpenCLKernel setArg(int index, int value) {
         clSetKernelArg(kernel, index, Sizeof.cl_int, Pointer.to(new int[]{value}));
+        return this;
     }
 
-    public void setArg(int index, long value) {
+    public OpenCLKernel setArg(int index, long value) {
         clSetKernelArg(kernel, index, Sizeof.cl_long, Pointer.to(new long[]{value}));
+        return this;
     }
 
-    public void setArg(int index, float value) {
+    public OpenCLKernel setArg(int index, float value) {
         clSetKernelArg(kernel, index, Sizeof.cl_float, Pointer.to(new float[]{value}));
+        return this;
     }
 
-    public void setArg(int index, double value) {
+    public OpenCLKernel setArg(int index, double value) {
         clSetKernelArg(kernel, index, Sizeof.cl_double, Pointer.to(new double[]{value}));
+        return this;
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.jocl.cl_device_id;
 
 import static org.jocl.CL.*;
 
-public class OpenCLContext extends OpenCLBaseObject<cl_context> implements AutoCloseable {
+public class OpenCLContext extends OpenCLObject<cl_context> implements AutoCloseable {
     public static OpenCLContext create(OpenCLDevice... devices) {
         return create(null,  devices);
     }
@@ -58,12 +58,12 @@ public class OpenCLContext extends OpenCLBaseObject<cl_context> implements AutoC
         public Properties() {}
 
         public Properties addPlatform(OpenCLPlatform value) {
-            properties.addProperty(CL_CONTEXT_PLATFORM, value.baseObject);
+            properties.addProperty(CL_CONTEXT_PLATFORM, value.object);
             return this;
         }
 
         public Properties add(int property, OpenCLPlatform value) {
-            properties.addProperty(property, value.baseObject);
+            properties.addProperty(property, value.object);
             return this;
         }
 
